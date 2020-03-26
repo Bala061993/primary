@@ -1,0 +1,33 @@
+public class Stepdefinition {
+	
+	WebDriver driver;
+	
+	@Given("^the user launch the url$")
+	public void the_user_launch_the_url() {
+		WebDriverManager.chromedriver().setup();
+		driver=new ChromeDriver();
+		driver.get("https://www.facebook.com");
+		driver.manage().window().maximize();
+	}
+
+@When("^the user enters \"(.*?)\"$")
+	public void the_user_enters_username(String username) throws Throwable {
+		driver.findElement(By.id("email")).sendKeys(username);
+	
+	}
+	@When("^the user sends \"(.*?)\"$")
+	public void the_user_enters_password(String password) throws Throwable {
+		driver.findElement(By.id("pass")).sendKeys(password);	
+	}
+
+	@When("^the user clicks login button$")
+	public void the_user_clicks_login_button() throws Throwable {
+		driver.findElement(By.id("loginbutton")).click();
+		}
+
+	@Then("^the user validates title and url of the page$")
+	public void the_user_validates_title_and_url_of_the_page() throws Throwable {
+		System.out.println("Title &url of page:"+driver.getCurrentUrl()+" "+driver.getTitle());
+		}
+	
+	
