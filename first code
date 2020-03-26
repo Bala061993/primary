@@ -1,0 +1,11 @@
+public class Stepdefinition {
+	
+	WebDriver driver;
+	
+	@Given("^the user launch the url$")
+	public void the_user_launch_the_url() {
+		WebDriverManager.chromedriver().setup();
+		driver=new ChromeDriver();
+		driver.get("https://www.facebook.com");
+		driver.manage().window().maximize();
+	}
