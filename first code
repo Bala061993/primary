@@ -9,3 +9,9 @@ public class Stepdefinition {
 		driver.get("https://www.facebook.com");
 		driver.manage().window().maximize();
 	}
+
+@When("^the user enters \"(.*?)\"$")
+	public void the_user_enters_username(String username) throws Throwable {
+		driver.findElement(By.id("email")).sendKeys(username);
+	
+	}
